@@ -19,6 +19,9 @@ participantNum = 5
 batch_size = 64
 noisyDimonsion = 50
 ImgDimonsion = 784
+
+
+
 # 公有矩阵：
 PublicMat = np.random.normal(0, 1, (ImgDimonsion + noisyDimonsion, ImgDimonsion))
 PublicMat = torch.from_numpy(PublicMat).float()
