@@ -17,19 +17,19 @@ mytransform = transforms.Compose([
 )
 participantNum = 5
 batch_size = 64
-noisyDimonsion = 100
+noisyDimonsion = 50
 ImgDimonsion = 784
 # 公有矩阵：
-PublicMat = np.random.normal(0, 1, (784 + noisyDimonsion, 784))
+PublicMat = np.random.normal(0, 1, (ImgDimonsion + noisyDimonsion, ImgDimonsion))
 PublicMat = torch.from_numpy(PublicMat).float()
 # 创建participantNum个私有矩阵:
 SelfMats = []
 for i in range(participantNum):
-      selfMat = np.random.normal(0,1,(ImgDimonsion,784))
+      selfMat = np.random.normal(0,1,(noisyDimonsion,ImgDimonsion))
       selfMat = torch.from_numpy(selfMat).float()
       SelfMats.append(selfMat)
 # 创建测试私有矩阵
-TestMat = np.random.normal(0,1,(ImgDimonsion,784))
+TestMat = np.random.normal(0,1,(noisyDimonsion,ImgDimonsion))
 TestMat = torch.from_numpy(TestMat).float()
 
 train_loader = DataLoader(TransNetHLoader.TrainsNetHLoader(FileName='data/MNIST/raw/train.txt',noisyDimonsion=noisyDimonsion,
@@ -85,8 +85,8 @@ def train(epoch):
     loss=0;
 
     for batch_idx, (data, target) in enumerate(train_loader):#batch_idx是enumerate（）函数自带的索引，从0开始
-        print(data.shape)
-        print(target.shape)
+        # print(data.shape)
+        # print(target.shape)
         # data.size():[64, 1, 28, 28]
         # target.size():[64]
 

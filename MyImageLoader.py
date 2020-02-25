@@ -10,8 +10,6 @@ from torch.utils import data
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-
 def default_loader(path):
     return Image.open(path)
 

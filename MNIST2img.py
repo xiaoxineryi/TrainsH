@@ -8,7 +8,6 @@ train_set = (
     mnist.read_image_file(os.path.join(root, 'train-images-idx3-ubyte')),
     mnist.read_label_file(os.path.join(root, 'train-labels-idx1-ubyte'))
 )
-
 test_set = (
     mnist.read_image_file(os.path.join(root, 't10k-images-idx3-ubyte')),
     mnist.read_label_file(os.path.join(root, 't10k-labels-idx1-ubyte'))
@@ -16,7 +15,6 @@ test_set = (
 
 print("train set:", train_set[0].size())
 print("test set:", test_set[0].size())
-
 
 def convert_to_img(train=True):
     if (train):
@@ -43,7 +41,5 @@ def convert_to_img(train=True):
             int_label = int_label.replace(')', '')
             f.write(img_path + ' ' + str(int_label) + '\n')
         f.close()
-
-
 convert_to_img(True)
 convert_to_img(False)

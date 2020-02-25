@@ -53,7 +53,7 @@ class TrainsNetHLoader(data.Dataset):
         #     将img 从28*28变成 1*784的矩阵
             img = img.view(1,-1)
         #     生成随机噪音 1*noisyDimonsion
-            noisy = np.random.normal(0,1,(1,100))
+            noisy = np.random.normal(0,1,(1,self.noisyDimonsion))
             noisy = torch.from_numpy(noisy)
             # 拼接在一起
             noisy = noisy.float()
@@ -73,7 +73,7 @@ class TrainsNetHLoader(data.Dataset):
             else:
                 selfMat = self.TestMat
 
-            step2Mat = img.mm(selfMat)
+            step2Mat = noisy.mm(selfMat)
             # step2Mat = noisy.mm(selfMat)
             #  两者相加就是最终的数据 也就是更正后的图片数据
             EndMat = step1Mat+step2Mat
