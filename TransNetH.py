@@ -20,7 +20,13 @@ batch_size = 64
 noisyDimonsion = 50
 ImgDimonsion = 784
 
-
+PublicMatNone = np.random.normal(0,1,(ImgDimonsion,ImgDimonsion))
+PublicMatNone = torch.from_numpy(PublicMatNone).float()
+SelfMatNone = []
+for i in range(participantNum):
+    selfMat = np.random.normal(0,1,(ImgDimonsion,ImgDimonsion))
+    selfMat = torch.from_numpy(selfMat).float()
+    SelfMatNone.append(selfMat)
 
 # 公有矩阵：
 PublicMat = np.random.normal(0, 1, (ImgDimonsion + noisyDimonsion, ImgDimonsion))
